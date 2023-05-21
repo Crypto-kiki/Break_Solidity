@@ -84,11 +84,27 @@ contract BreakSolidity11_20 {
 
     /* 18. 이름을 검색하면 생일이 나올 수 있는 자료구조를 구현하세요.
     (매핑) 해당 자료구조에 정보를 넣는 함수, 정보를 볼 수 있는 함수도 구현하세요.*/
+    struct info {
+        string name;
+        uint birthday;
+    }
+    info[] birthday_info;
+    mapping(string => info) birthday;
+    function Birthday(string memory _name, uint _day) public {
+        birthday[_name] = info(_name, _day);
+    }
+    function check_birthday(string memory _name) public view returns(info memory) {
+        return birthday[_name];
+    }
 
 
     /* 19. 숫자를 넣으면 2배를 반환해주는 함수를 구현하세요. 단 숫자는 1000이상 넘으면 함수를 실행시키지 못하게 합니다.*/
-
+    function double(uint _a) public pure returns(uint) {
+        require(_a <= 1000, "input under number 1000");
+        return _a * 2;
+    }
 
     /* 20. 숫자만 들어가는 배열을 선언하고 숫자를 넣는 함수를 구현하세요.
     15개의 숫자가 들어가면 3의 배수 위치에 있는 숫자들을 초기화 시키는(3번째, 6번째, 9번째 등등) 함수를 구현하세요. (for 문 응용 → 약간 까다로움)*/
+    
 }
